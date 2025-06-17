@@ -1,0 +1,10 @@
+<form action="/search/{{user.id}}/user" method="POST">
+  <label for="search">Search for : </label>
+  <input type="text" id="search" name="input" />
+  <select name="searchType" id="searchType">
+    <option value="book">Book</option>
+    <option value="author">Author</option>
+    <option value="section">Section</option>
+  </select>
+  <button type="submit">Search</button>
+</form>

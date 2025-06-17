@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {%if section == None%}
+    <p>Sorry , Section you are searching for is not present</p>
+    {%else%}
+    <div>
+      <h3>Results</h3>
+      <p>
+        {{section.title}}|<a href="/addBook/{{section.title}}/{{section.id}}"
+          >Edit</a
+        >
+      </p>
+    </div>
+    {%endif%}
+  </body>
+</html>

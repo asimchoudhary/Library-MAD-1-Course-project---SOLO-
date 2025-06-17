@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      [requests]
+      <a href="/adminHome">books</a>
+      <a href="/adminStats">stats</a>
+      <a href="/adminLogout">Logout</a>
+    </nav>
+    <h3>Requests</h3>
+    <div>Book's Name | User | Request Duration | Granted |Status</div>
+    {%for request in bookRequests%}
+    <div>
+      {%if request.granted == False%}
+      {{request.book.title}}|{{request.userWhoRequested.username}}|{{request.time}}|{{request.granted}}|<a
+        href="/approveRequest/{{request.id}}"
+        >Approve</a
+      >|<a href="/discardRequest/{{request.id}}">Discard</a> {%if loop.last %}
+      <h3>Request which are Accepted</h3>
+      {%endif%} {%endif%}
+    </div>
+    {% endfor %} {%for request in bookRequests%}
+    <div>
+      {%if request.granted == True%}
+      {{request.book.title}}|{{request.userWhoRequested.username}}|{{request.granted}}|<a
+        href="/discardRequest/{{request.id}}"
+        >Revoke</a
+      >|{%endif%} {%endfor%}
+    </div>
+  </body>
+</html>

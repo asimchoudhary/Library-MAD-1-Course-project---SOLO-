@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Librarian dashboard</h2>
+    ------------------------------------------------------------
+    <nav>
+      <a href="/requestsByUsers">requests</a>
+      <a href="#">books</a>
+      <a href="/adminStats">stats</a>
+      <a href="/adminLogout">Logout</a>
+    </nav>
+
+    ------------------------------------------------------------
+    <div>{%include "adminsearchComponent.html"%}</div>
+
+    <h3>Sections</h3>
+
+    {%for section in sections%}
+    <div>
+      <ul>
+        <li>Section :<strong>{{section.title}}</strong></li>
+        <li>Date Created : {{section.date}}</li>
+        <li>Description : {{section.desc}}</li>
+      </ul>
+      <a href="/addBook/{{section.title}}/{{section.id}}">Add Book</a>
+      <br />
+      ----------------------------------------------------------------
+    </div>
+    {% endfor %}
+
+    <div>
+      <h4><a href="/addSection">Add new section</a></h4>
+    </div>
+    <div>
+      <a href="/deleteSection">Delete Section </a>
+    </div>
+  </body>
+</html>

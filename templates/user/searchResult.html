@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <a href="#">Go back</a>
+    </nav>
+    <h3>Result of your Search</h3>
+    <div>
+      {%if type == "section"%} {%if section == None%}
+      <p>Sorry , but the section is not present you are searching for</p>
+      {%else%}
+      <p>
+        {{section.title}}
+        <a href="/{{user.id}}/{{section.id}}">View</a>
+        {%endif%} {%endif%}
+      </p>
+    </div>
+  </body>
+</html>

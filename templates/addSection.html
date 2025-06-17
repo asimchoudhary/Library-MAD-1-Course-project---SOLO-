@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Create a new Section</h3>
+    <form action="/addSection" method="POST">
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" placeholder="title" required />
+      <label for="date">Date Created</label>
+      <input
+        type="text"
+        id="date"
+        name="date"
+        placeholder="Today's Date"
+        required
+      />
+      <p>giving functionality to have an image</p>
+      <label for="desc">Description</label>
+      <input
+        type="text"
+        id="desc"
+        name="desc"
+        placeholder="Describe the section"
+        required
+      />
+      <button type="submit">Create</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Books in the {{section}} section</h3>
+    <a href="/adminHome">Go back to the Homepage</a>
+    <div>
+      {%if books == []%}
+      <p>There are no books in this Section yet</p>
+      {%endif%} {%if books != []%} {%for book in books%}
+      <ul>
+        <img
+          src="{{ url_for('static', filename='uploads/' + book.title + '.jpg') }}"
+          alt="Book image"
+          width="150px"
+          height="150px"
+        />
+        <li>Book : {{book.title}}</li>
+        <li>Book's Author : {{book.author}}</li>
+        <li>Book's Description : {{book.content}}</li>
+        <a href="/deleteBook/{{book.id}}/{{sectionId}}"
+          ><button>Delete</button></a
+        >
+      </ul>
+      {% endfor %} {%endif%}
+    </div>
+    <h3>Add new book to the section</h3>
+    <form
+      action="/addBook/{{section}}/{{sectionId}}"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <label for="title">Title :</label>
+      <input type="text" name="title" id="title" placeholder="Title" />
+      <label for="author">Author :</label>
+      <input type="text" name="author" id="author" placeholder="Author" />
+      <label for="content">Description :</label>
+      <input type="text" name="content" id="content" placeholder="Content" />
+      <label for="price">Price for Book (in Rs.) :</label>
+      <input type="number" name="price" id="price" placeholder="Price" />
+      <label for="bookCover">Book Cover Image</label>
+      <input type="file" id="bookCover" name="bookCover" />
+      <div>Section : {{section}}</div>
+      <label for="pdf">Upload pdf</label>
+      <input type="file" id="pdf" name="file" />
+      <br />
+      <button type="submit">Upload</button>
+    </form>
+  </body>
+</html>

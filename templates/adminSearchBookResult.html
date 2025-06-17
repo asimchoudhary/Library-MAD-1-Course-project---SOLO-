@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {%if books == []%}
+    <p>Sorry , unable to find the book you are finding</p>
+    {%else%} {%if books[0] == None%}
+    <p>Sorry , unable to find the book you are finding</p>
+    {%else%}
+    <h3>Results</h3>
+    {%for book in books%}
+    <p>
+      {{book.title}}|{{book.author}}|<a
+        href="/deleteBook/{{book.id}}/{{book.section.id}}"
+        >Delete</a
+      >
+    </p>
+    {%endfor%} {%endif%} {%endif%}
+  </body>
+</html>

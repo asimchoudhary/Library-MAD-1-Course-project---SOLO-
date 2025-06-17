@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <a href="/books/{{user.id}}">Go Back</a>
+    </div>
+    <h2>{{section.title}} Section</h2>
+    -----------------------------------------------------------------------------------------
+    <div>
+      <ul>
+        {%for book in books%}
+        <li>
+          <img
+            src="{{ url_for('static', filename='uploads/' + book.title + '.jpg') }}"
+            alt="Book image"
+            width="150px"
+            height="150px"
+          />
+          {{book.title}} | {{book.author}} | {%if book.id in requestedBooksId%}
+          <a href="/requestBook/{{user.id}}/{{book.id}}/cancel/section"
+            >Cancel Request</a
+          >
+          <form
+            action="/writeComment/{{book.id}}/{{user.id}}/{{section.id}}"
+            method="post"
+          >
+            <label for="postComment">Post a Comment : </label>
+            <input type="text" id="postComment" name="Comment" />
+          </form>
+
+          <div>
+            Comments:
+            <ul>
+              {%if book.feedback == []%}
+              <li>No Comments Yet</li>
+              {%else%} {%for feedback in book.feedback%}
+              <li>{{feedback.feedback}}</li>
+              {%endfor%} {%endif%}
+            </ul>
+          </div>
+          {%else%}
+          <a href="/buyBook/{{book.id}}" target="_blank">
+            <button>Download for Rs.{{book.price}}</button>
+          </a>
+          <form
+            action="/requestBook/{{user.id}}/{{book.id}}/request/section"
+            method="get"
+          >
+            <label for="time">Duration </label>
+            <input
+              type="number"
+              name="time"
+              pattern="[0-9]*"
+              placeholder="1"
+              id="time"
+            />
+            <label for="unit">Time Unit</label>
+            <select name="timeUnit" id="unit">
+              <option value="day">Day</option>
+              <option value="week">Week</option>
+              <option value="month">Month</option>
+            </select>
+            <button type="submit">Request</button>
+          </form>
+          <form
+            action="/writeComment/{{book.id}}/{{user.id}}/{{section.id}}"
+            method="post"
+          >
+            <label for="postComment">Post a Comment : </label>
+            <input type="text" id="postComment" name="Comment" />
+            <button type="submit">Post</button>
+          </form>
+          <div>
+            Comments:
+            <ul>
+              {%if book.feedback == []%} No Comments Yet {%else%} {%for feedback
+              in book.feedback%}
+              <li>{{feedback.feedback}}</li>
+              {%endfor%} {%endif%}
+            </ul>
+          </div>
+          {%endif%}
+          <br />
+          -----------------------------------------------------------------------------------------
+        </li>
+
+        {%endfor%}
+      </ul>
+    </div>
+  </body>
+</html>

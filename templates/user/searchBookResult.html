@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {%if books == []%}
+    <p>Sorry , but the book is not present you are searching for</p>
+    {%else%} {%if books[0] == None%}
+    <p>Sorry , but the book is not present you are searching for</p>
+    {%else%}
+    <h3>Here is your searched Book</h3>
+    {%for book in books%} {%if book.id in requestedBooksId%}
+    <p>
+      {{book.title}}|{{book.author}}|<a
+        href="/requestBook/{{user.id}}/{{book.id}}/cancel/myBooks"
+        >Cancel Request</a
+      >
+    </p>
+    {%else%}
+    <p>
+      {{book.title}}|{{book.author}}|<a
+        href="/requestBook/{{user.id}}/{{book.id}}/request/myBooks"
+        >Request</a
+      >
+    </p>
+    {%endif%} {%endfor%} {%endif%} {%endif%}
+  </body>
+</html>

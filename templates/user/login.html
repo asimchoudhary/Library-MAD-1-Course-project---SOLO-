@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Hey , User Login here to access the Library</h3>
+    <form action="/userLogin" method="POST">
+      <label for="username">Username :</label>
+      <input
+        type="text"
+        name="username"
+        id="username"
+        placeholder="Username"
+        required
+      />
+      <label for="password">Password :</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Password"
+        required
+      />
+      <button type="submit">Login</button>
+    </form>
+    <h5>
+      Don't have account don't panic <a href="/userRegister">Register Here</a>
+    </h5>
+  </body>
+</html>

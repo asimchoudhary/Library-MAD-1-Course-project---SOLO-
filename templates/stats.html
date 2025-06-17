@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/adminHome">books</a>
+      <a href="/requestsByUsers">requests</a>
+      [stats]
+      <a href="/adminLogout">Logout</a>
+    </nav>
+    <div>
+      <h3>Most popular Book</h3>
+      <img
+        src="{{url_for('static', filename= 'uploads/bookRequests.png')}}"
+        alt="stats"
+      />
+      <h3>Total Requests Distribution</h3>
+      <img
+        src="{{url_for('static', filename= 'uploads/pieAdmin.png')}}"
+        alt="stats"
+      />
+      <h3>Most Request made by a single user</h3>
+      <img
+        src="{{url_for('static', filename= 'uploads/userRequests.png')}}"
+        alt="stats"
+      />
+    </div>
+  </body>
+</html>
